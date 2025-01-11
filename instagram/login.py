@@ -32,7 +32,7 @@ def open_login():
 
 
 
-def load_cookies(driver, cookies_file="cookies.json", use_json=True):
+def load_cookies(driver, cookies_file="../cookies.json", use_json=True):
 
     if use_json:
         with open(cookies_file, "r") as cookie_file:
