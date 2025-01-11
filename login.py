@@ -32,10 +32,7 @@ def open_login():
 
 
 
-def login_cookies(driver, cookies_file="cookies.json", use_json=True):
-   
-    #driver.get("https://www.instagram.com")
-    #time.sleep(3)
+def load_cookies(driver, cookies_file="cookies.json", use_json=True):
 
     if use_json:
         with open(cookies_file, "r") as cookie_file:
