@@ -1,5 +1,5 @@
 from instagram.login import open_login, load_cookies
-from instagram.profiles import go_profile
+from instagram.profiles import go_profile, get_followers
 from instagram.follow import follow_users
 
 bot_token = '7614189700:AAGZV6cnbtRGmOChSF4txBajQ61KfWjVUfY'
@@ -15,7 +15,9 @@ if __name__ == "__main__":
 
     # Acceder al perfil y tomar la captura de pantalla
     go_profile(driver, bot_token, bot_chatId)
-
+    
+    get_followers(driver)
+    
     follow_users(driver, bot_token, bot_chatId)
 
     # Cerrar el navegador después de completar el proceso
