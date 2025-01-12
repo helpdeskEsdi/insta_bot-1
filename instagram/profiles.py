@@ -24,7 +24,7 @@ def go_profile(driver, bot_token, bot_chatID):
         print("La página de perfil se ha cargado correctamente.")
 
         # Tomar la captura de pantalla
-        screenshot_path = 'profile.png'
+        screenshot_path = '../screenshots/profile.png'
         driver.get_screenshot_as_file(screenshot_path)
 
         # Enviar la captura de pantalla al bot de Telegram
