@@ -1,19 +1,16 @@
 import datetime as dt
 import pandas as pd
-import openpyxl
 import os
 
 def generate_report():
     
     #Nombre del usuario
     username = "x_esdi"
-
-    #Titulos para las columnas excel
-     
+    path = f"../reports/{username}_followers.xlsx"
 
     #Crear excel
-    wb = openpyxl.Workbook()
-    sheet = wb.active
+    writer = pd.ExcelWriter(f"{path}", engine="xlsxwriter")
+    df.to_excel(writer, sheet_name="Seguimiento de seguidores")
 
     data = [
         ["Total Followers", "New followers", "Unfollows", "Date"]
