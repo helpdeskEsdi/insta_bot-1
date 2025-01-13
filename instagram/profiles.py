@@ -47,6 +47,6 @@ def go_profile(driver, bot_token, bot_chatID):
         print(f"No se pudo acceder al perfil o enviar la captura: {e}")
 
 
-def get_followers(driver):
+#def get_followers(driver):
 
-    driver.find_element(By.XPATH, )
+    #driver.find_element(By.XPATH, )

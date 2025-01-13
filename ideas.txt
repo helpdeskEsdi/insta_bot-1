@@ -1,0 +1,5 @@
+- /track (Comando para ver aumento de seguidores)
+- /interact (Comando para que insta interactue)
+-
+- Sacar seguidores desde otras cuentas. Es decir desde un excel con posibles seguidores (seedfollowers) 
+  buscar desde esa cuenta los seguidores

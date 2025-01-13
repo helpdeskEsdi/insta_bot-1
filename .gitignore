@@ -1,3 +1,4 @@
-cookies.json
+*.json
 *pyc
 *.xlsx
+*.pkl
