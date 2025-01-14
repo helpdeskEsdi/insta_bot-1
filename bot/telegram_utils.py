@@ -1,5 +1,5 @@
 import requests
-
+import os
 #Adjuntar texto junto a la imagen: -F caption="<TEXTO JUNTO IMAGEN>"
 
 #Envia foto del perfil de nuestro usuario
@@ -21,29 +21,42 @@ def send_profile_followed(token, bot_chatID, screenshot_path):
 
 
 #Envia el excel con el seguimiento de seguidores
-def send_followers(token, bot_chatID, total_followers, new_followers, unfollows): 
+import requests
+
+def send_followers(token, bot_chatID, total_followers, new_followers, unfollows):
     url = f'https://api.telegram.org/bot{token}/sendMessage'
 
+    # Crear el mensaje
     message = f"📊 **Seguidores Report**\n\n"
     message += f"**Seguidores actuales:** {total_followers}\n"
     message += f"**Seguidores nuevos:** {new_followers}\n"
     message += f"**Seguidores perdidos:** {unfollows}"
 
+    # Datos a enviar
+    payload = {
+        'chat_id': bot_chatID,
+        'text': message,
+        'parse_mode': 'Markdown'
+    }
+
     try:
-        response = requests.get(url)
+        # Enviar la solicitud POST con los datos
+        response = requests.post(url, data=payload)
         if response.status_code == 200:
             print("Mensaje enviado a Telegram con éxito.")
         else:
-            print(f"Error al enviar mensaje a Telegram: {response.status_code}")
+            print(f"Error al enviar mensaje a Telegram: {response.status_code} - {response.text}")
     except Exception as e:
         print(f"Error al conectar con la API de Telegram: {e}")
 
 
-def send_followers_report(token, chat_id, parse_mode='MarkDown'):
+
+def send_followers_report(token, chat_id):
     
     url = f'https://api.telegram.org/bot{token}/sendDocument'
+
+    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../report_x_esdi_followers.xlsx')
     
-    file_path = "./funciones.txt"
     try:
 
         with open(file_path, 'rb') as file:

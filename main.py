@@ -1,13 +1,29 @@
 from instagram.login import open_login, load_cookies
-from instagram.profiles import go_profile #get_num_followers #get_followers 
+from instagram.profiles import go_profile, get_num_followers #get_followers 
 from instagram.follow import follow_users
+from bot.telegram_utils import send_followers_report
 
-bot_token = '7614189700:AAGZV6cnbtRGmOChSF4txBajQ61KfWjVUfY'
-bot_chatId = '8024601173'
+token = '7614189700:AAGZV6cnbtRGmOChSF4txBajQ61KfWjVUfY'
+chat_id = '8024601173'
+
+def track(): 
+
+    driver  = open_login()
+
+    load_cookies(driver, cookies_file="cookies.json", use_json=True)
+
+    get_num_followers(driver)
+
+
+
+
+def report():
+   send_followers_report(token, chat_id)
 
 
 if __name__ == "__main__":
-    # Iniciar sesión en Instagram (abre el navegador)
+   
+   """ # Iniciar sesión en Instagram (abre el navegador)
     driver = open_login()
     
     # Cargar las cookies si están disponibles
@@ -20,7 +36,21 @@ if __name__ == "__main__":
     
     #get_followers(driver)
     
-    follow_users(driver, bot_token, bot_chatId)
+    #follow_users(driver, bot_token, bot_chatId)
 
     # Cerrar el navegador después de completar el proceso
-    driver.quit()
+    driver.quit()"""
+   
+   option = int(input("Escoge una opcion a probar: "))
+
+   while (option != 0): 
+       match(option):
+           case 1:
+            track()
+           case 2:
+            report()
+           case _:
+            print("Opcion no valida")
+
+
+

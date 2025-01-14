@@ -1,6 +1,11 @@
 import os
 import pandas as pd
 import datetime as dt
+from bot.telegram_utils import send_followers
+
+token = '7614189700:AAGZV6cnbtRGmOChSF4txBajQ61KfWjVUfY'
+bot_chatID = '8024601173'
+
 
 def create_report(num_followers):
     username = "x_esdi"
@@ -79,3 +84,5 @@ def create_report(num_followers):
     
     except Exception as e:
         print(f"Error al guardar en Excel: {str(e)}")
+
+    send_followers(token, bot_chatID, num_followers, last_followers, unfollows)
