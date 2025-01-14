@@ -8,3 +8,6 @@
 
 /report
     1. Enviar el excel
+
+/getfollowers + [cuenta de quien sacar los followers]
+

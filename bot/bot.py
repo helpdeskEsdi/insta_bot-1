@@ -14,7 +14,6 @@ driver = open_login()
 def track (update): 
     
     load_cookies(driver)
-
     num_followers = get_num_followers()
     
     new_followers, unfollows = create_report(num_followers)
@@ -26,7 +25,7 @@ def track (update):
                               f"**Seguidores nuevos:** {new_followers}\n"
                               f"**Seguidores perdidos:** {unfollows}")
     
-
+    return update
 
 #COMANDO PARA ENVIAR EXCEL DE SEGUIDORES
 def report (update):
