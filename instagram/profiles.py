@@ -7,6 +7,8 @@ import time
 import os
 from instagram.login import load_cookies
 from bot.telegram_utils import send_profile_image  
+from instagram.track_followers import create_report
+import re
 
 def go_profile(driver, bot_token, bot_chatID):
     
@@ -33,10 +35,9 @@ def go_profile(driver, bot_token, bot_chatID):
             os.makedirs(screenshot_dir)
             print(f"Carpeta '{screenshot_dir}' creada.")
 
-        # Ruta completa para guardar la captura de pantalla
+        # Ruta para guardar la captura de pantalla
         screenshot_path = os.path.join(screenshot_dir, 'profile.png')
 
-        # Tomar la captura de pantalla
         driver.get_screenshot_as_file(screenshot_path)
 
         # Enviar la captura de pantalla al bot de Telegram
@@ -47,6 +48,33 @@ def go_profile(driver, bot_token, bot_chatID):
         print(f"No se pudo acceder al perfil o enviar la captura: {e}")
 
 
-#def get_followers(driver):
+def get_num_followers(driver):
+    try:
 
-    #driver.find_element(By.XPATH, )
+        profile_btn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//span[text()='Perfil']"))
+        )
+        profile_btn.click()
+        print("Ha accedido al perfil.")
+
+
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, "//span[text()='Publicaciones']"))
+        )
+        print("La página de perfil se ha cargado correctamente.")
+
+
+        followers_link = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, '//a[contains(@href, "/followers/")]'))
+        )
+        
+        num_followers_txt = (followers_link.text)
+        
+        num_followers = int(re.sub(r'\D', '', num_followers_txt))
+        
+        print(f"El número de seguidores es: {num_followers}") # Reemplaza todo lo que no sea un número con ''
+        create_report(num_followers)
+
+    except Exception as e: 
+        print("No se ha podido extraer los seguidores")
+        print(f"Error: {e}")
