@@ -13,10 +13,10 @@ driver = open_login()
 def track (update: Update, context: CallbackContext): 
     
     load_cookies(driver)
+
     num_followers = get_num_followers()
-
+    
     new_followers, unfollows = create_report(num_followers)
-
     send_followers(token, bot_chatID , num_followers, new_followers, unfollows)
      
     # Responder al usuario de Telegram
