@@ -36,3 +36,9 @@ def send_followers(token, bot_chatID, total_followers, new_followers, unfollows)
     except Exception as e:
         print(f"Error al conectar con la API de Telegram: {e}")
 
+
+def send_followers_report(token, chat_Id):
+    
+    url = f'https://api.telegram.org/bot{token}/sendDocument'
+
+    
