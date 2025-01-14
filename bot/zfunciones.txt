@@ -11,3 +11,10 @@
 
 /getfollowers + [cuenta de quien sacar los followers]
 
+
+/authenticate [codigo]
+
+1. Leer un excel con claves y buscar si existe si lo hace puede usar el bot sino no.
+
+
+

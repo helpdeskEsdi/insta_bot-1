@@ -10,6 +10,10 @@ from bot.telegram_utils import send_profile_image
 from instagram.track_followers import create_report
 import re
 
+########################################################
+######### Accede al perfil y envia una captura #########
+########################################################
+
 def go_profile(driver, bot_token, bot_chatID):
     
     try:
@@ -35,7 +39,7 @@ def go_profile(driver, bot_token, bot_chatID):
             os.makedirs(screenshot_dir)
             print(f"Carpeta '{screenshot_dir}' creada.")
 
-        # Ruta para guardar la captura de pantalla
+        # Ruta para la captura de pantalla
         screenshot_path = os.path.join(screenshot_dir, 'profile.png')
 
         driver.get_screenshot_as_file(screenshot_path)
@@ -48,7 +52,12 @@ def go_profile(driver, bot_token, bot_chatID):
         print(f"No se pudo acceder al perfil o enviar la captura: {e}")
 
 
+########################################################
+## Recoge el numero de seguidores que tiene la cuenta ##
+########################################################
+
 def get_num_followers(driver):
+
     try:
 
         profile_btn = WebDriverWait(driver, 10).until(
