@@ -31,4 +31,31 @@ def send_test_message(token, chat_id, message, parse_mode='Markdown'):
         print(f"Error al hacer la solicitud: {e}")
         return None
  
-send_test_message(token=token, chat_id=chat_id, message=message, parse_mode='Markdown')
+#send_test_message(token, chat_id, message, parse_mode='Markdown')
+
+
+#PRUEBA DE ENVIAR DOCUMENTOS
+def send_followers_report(token, chat_id, parse_mode='MarkDown'):
+    
+    url = f'https://api.telegram.org/bot{token}/sendDocument'
+    
+    file_path = "./funciones.txt"
+    try:
+
+        with open(file_path, 'rb') as file:
+            response = requests.post(url, data={'chat_id': chat_id}, files={'document': file})
+
+        # Verificar si la solicitud fue exitosa
+        if response.status_code == 200:
+            print("Mensaje enviado exitosamente.")
+        else:
+            print(f"Error: No se pudo enviar el mensaje. Código de estado: {response.status_code}")
+        
+        return response
+    
+    except requests.exceptions.RequestException as e:
+        print(f"Error al hacer la solicitud: {e}")
+        return None
+
+
+send_followers_report(token, chat_id)

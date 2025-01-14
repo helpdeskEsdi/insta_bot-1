@@ -10,7 +10,7 @@ bot_chatID = '8024601173'
 
 driver = open_login()
 
-def track (update: Update, context: CallbackContext): 
+def track (update): 
     
     load_cookies(driver)
 
@@ -28,7 +28,7 @@ def track (update: Update, context: CallbackContext):
     
 def main():
 
-
+    
     application = Application.builder().token(token).build()
     
 

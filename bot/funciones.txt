@@ -1,0 +1,10 @@
+/track
+    1. Tiene que abrir el login
+    2. Cargar las cookies
+    3. Ir al perfil
+    4. Sacar seguidores
+    5. Enviar al Excel
+    6. Enviar al telegram
+
+/report
+    1. Enviar el excel
