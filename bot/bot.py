@@ -4,6 +4,7 @@ from instagram.profiles import get_num_followers
 from bot.telegram_utils import send_followers
 from instagram.track_followers import create_report
 from instagram.login import load_cookies, open_login
+from telegram_utils import send_followers_report
 
 token = '7614189700:AAGZV6cnbtRGmOChSF4txBajQ61KfWjVUfY'
 bot_chatID = '8024601173'
@@ -25,16 +26,27 @@ def track (update):
                               f"**Seguidores nuevos:** {new_followers}\n"
                               f"**Seguidores perdidos:** {unfollows}")
     
-    
+
+
+#COMANDO PARA ENVIAR EXCEL DE SEGUIDORES
+def report (update):
+
+    send_followers_report(token, bot_chatID)
+
+
+
 def main():
 
-    
+
     application = Application.builder().token(token).build()
     
 
     # Manejar el comando /track
     track_handler = CommandHandler('track', track)
     application.add_handler(track_handler)
+
+    report_handler = CommandHandler('report', report)
+    application.add_handler(report_handler)
 
     # Empezar el bot
     application.start_polling()
