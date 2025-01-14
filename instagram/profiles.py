@@ -7,7 +7,7 @@ import time
 import os
 from instagram.login import load_cookies
 from bot.telegram_utils import send_profile_image  
-from instagram.track_followers import create_report
+from instagram.create_reports import create_report
 import re
 
 ########################################################
