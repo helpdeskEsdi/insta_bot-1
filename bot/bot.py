@@ -2,7 +2,7 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 from instagram.login import open_login, load_cookies
 from instagram.profiles import get_num_followers
-from bot.telegram_utils import send_followers_report  # Importa estas funciones desde el módulo correspondiente
+from bot.telegram_utils import send_followers_report
 
 # Comando para responder a /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:

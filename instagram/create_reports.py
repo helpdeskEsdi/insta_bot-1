@@ -57,6 +57,7 @@ def create_report(num_followers):
             new_followers = num_followers - last_followers if num_followers > last_followers else 0
             unfollows = num_followers - last_followers if num_followers < last_followers else 0 
             print(f"Seguidores nuevos: {new_followers}")
+            print(f'Seguidores perdidos: {unfollows}')
     
     except Exception as e:
         print(f"Error al leer el archivo Excel: {str(e)}")

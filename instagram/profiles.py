@@ -14,7 +14,7 @@ import re
 ######### Accede al perfil y envia una captura #########
 ########################################################
 
-def go_profile(driver, bot_token, bot_chatID):
+def go_profile(driver, token, chat_id):
     
     try:
 
@@ -45,7 +45,8 @@ def go_profile(driver, bot_token, bot_chatID):
         driver.get_screenshot_as_file(screenshot_path)
 
         # Enviar la captura de pantalla al bot de Telegram
-        send_profile_image(bot_token, bot_chatID, screenshot_path)
+        send_profile_image(token, chat_id, screenshot_path)
+        
         print("Captura de pantalla enviada exitosamente.")
 
     except Exception as e:

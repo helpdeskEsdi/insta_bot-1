@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from bot.telegram_utils import send_profile_followed
 
-def follow_users(driver, bot_token, bot_chatID):
+def follow_users(driver, token, chat_id):
     follows_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../follows.xlsx')
 
     df = pd.read_excel(follows_path, header=None)
